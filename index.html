@@ -39,8 +39,8 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/Prov_Sud_Ouest_1.js"></script>
-        <script src="data/Secteur1_2.js"></script>
+        <script src="data/Prov_Sud_Ouest_2.js"></script>
+        <script src="data/Secteur1_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -49,7 +49,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[5.592367365282403,-10.765619727958871],[13.9079074539065,2.445607372401529]]);
+        }).fitBounds([[9.03124222622348,-5.452551104811669],[11.480325887150913,-1.5790134310268518]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -98,10 +98,23 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_GoogleTerrain_0');
-        map.getPane('pane_GoogleTerrain_0').style.zIndex = 400;
-        var layer_GoogleTerrain_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleTerrain_0',
+        map.createPane('pane_2gisMap_0');
+        map.getPane('pane_2gisMap_0').style.zIndex = 400;
+        var layer_2gisMap_0 = L.tileLayer('https://tile2.maps.2gis.com/tiles?x={x}&y={y}&z={z}&v=1.1', {
+            pane: 'pane_2gisMap_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_2gisMap_0;
+        map.addLayer(layer_2gisMap_0);
+        map.createPane('pane_GoogleTerrain_1');
+        map.getPane('pane_GoogleTerrain_1').style.zIndex = 401;
+        var layer_GoogleTerrain_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleTerrain_1',
             opacity: 1.0,
             attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
             minZoom: 1,
@@ -109,9 +122,9 @@
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_GoogleTerrain_0;
-        map.addLayer(layer_GoogleTerrain_0);
-        function pop_Prov_Sud_Ouest_1(feature, layer) {
+        layer_GoogleTerrain_1;
+        map.addLayer(layer_GoogleTerrain_1);
+        function pop_Prov_Sud_Ouest_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -150,11 +163,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Prov_Sud_Ouest_1_0(feature) {
+        function style_Prov_Sud_Ouest_2_0(feature) {
             switch(String(feature.properties['Nom'])) {
                 case 'BOUGOURIBA':
                     return {
-                pane: 'pane_Prov_Sud_Ouest_1',
+                pane: 'pane_Prov_Sud_Ouest_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -169,7 +182,7 @@
                     break;
                 case 'IOBA':
                     return {
-                pane: 'pane_Prov_Sud_Ouest_1',
+                pane: 'pane_Prov_Sud_Ouest_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -184,7 +197,7 @@
                     break;
                 case 'NOUMBIEL':
                     return {
-                pane: 'pane_Prov_Sud_Ouest_1',
+                pane: 'pane_Prov_Sud_Ouest_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -199,7 +212,7 @@
                     break;
                 case 'PONI':
                     return {
-                pane: 'pane_Prov_Sud_Ouest_1',
+                pane: 'pane_Prov_Sud_Ouest_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -214,21 +227,21 @@
                     break;
             }
         }
-        map.createPane('pane_Prov_Sud_Ouest_1');
-        map.getPane('pane_Prov_Sud_Ouest_1').style.zIndex = 401;
-        map.getPane('pane_Prov_Sud_Ouest_1').style['mix-blend-mode'] = 'normal';
-        var layer_Prov_Sud_Ouest_1 = new L.geoJson(json_Prov_Sud_Ouest_1, {
+        map.createPane('pane_Prov_Sud_Ouest_2');
+        map.getPane('pane_Prov_Sud_Ouest_2').style.zIndex = 402;
+        map.getPane('pane_Prov_Sud_Ouest_2').style['mix-blend-mode'] = 'normal';
+        var layer_Prov_Sud_Ouest_2 = new L.geoJson(json_Prov_Sud_Ouest_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Prov_Sud_Ouest_1',
-            layerName: 'layer_Prov_Sud_Ouest_1',
-            pane: 'pane_Prov_Sud_Ouest_1',
-            onEachFeature: pop_Prov_Sud_Ouest_1,
-            style: style_Prov_Sud_Ouest_1_0,
+            dataVar: 'json_Prov_Sud_Ouest_2',
+            layerName: 'layer_Prov_Sud_Ouest_2',
+            pane: 'pane_Prov_Sud_Ouest_2',
+            onEachFeature: pop_Prov_Sud_Ouest_2,
+            style: style_Prov_Sud_Ouest_2_0,
         });
-        bounds_group.addLayer(layer_Prov_Sud_Ouest_1);
-        map.addLayer(layer_Prov_Sud_Ouest_1);
-        function pop_Secteur1_2(feature, layer) {
+        bounds_group.addLayer(layer_Prov_Sud_Ouest_2);
+        map.addLayer(layer_Prov_Sud_Ouest_2);
+        function pop_Secteur1_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -268,9 +281,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Secteur1_2_0() {
+        function style_Secteur1_3_0() {
             return {
-                pane: 'pane_Secteur1_2',
+                pane: 'pane_Secteur1_3',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -284,26 +297,26 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Secteur1_2');
-        map.getPane('pane_Secteur1_2').style.zIndex = 402;
-        map.getPane('pane_Secteur1_2').style['mix-blend-mode'] = 'normal';
-        var layer_Secteur1_2 = new L.geoJson(json_Secteur1_2, {
+        map.createPane('pane_Secteur1_3');
+        map.getPane('pane_Secteur1_3').style.zIndex = 403;
+        map.getPane('pane_Secteur1_3').style['mix-blend-mode'] = 'normal';
+        var layer_Secteur1_3 = new L.geoJson(json_Secteur1_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Secteur1_2',
-            layerName: 'layer_Secteur1_2',
-            pane: 'pane_Secteur1_2',
-            onEachFeature: pop_Secteur1_2,
+            dataVar: 'json_Secteur1_3',
+            layerName: 'layer_Secteur1_3',
+            pane: 'pane_Secteur1_3',
+            onEachFeature: pop_Secteur1_3,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Secteur1_2_0(feature));
+                return L.circleMarker(latlng, style_Secteur1_3_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Secteur1_2);
-        map.addLayer(layer_Secteur1_2);
+        bounds_group.addLayer(layer_Secteur1_3);
+        map.addLayer(layer_Secteur1_3);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -315,9 +328,10 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var overlaysTree = [
-            {label: '<img src="legend/Secteur1_2.png" /> Secteur1', layer: layer_Secteur1_2},
-            {label: 'Prov_Sud_Ouest<br /><table><tr><td style="text-align: center;"><img src="legend/Prov_Sud_Ouest_1_BOUGOURIBA0.png" /></td><td>BOUGOURIBA</td></tr><tr><td style="text-align: center;"><img src="legend/Prov_Sud_Ouest_1_IOBA1.png" /></td><td>IOBA</td></tr><tr><td style="text-align: center;"><img src="legend/Prov_Sud_Ouest_1_NOUMBIEL2.png" /></td><td>NOUMBIEL</td></tr><tr><td style="text-align: center;"><img src="legend/Prov_Sud_Ouest_1_PONI3.png" /></td><td>PONI</td></tr></table>', layer: layer_Prov_Sud_Ouest_1},
-            {label: "Google Terrain", layer: layer_GoogleTerrain_0},]
+            {label: '<img src="legend/Secteur1_3.png" /> Secteur1', layer: layer_Secteur1_3},
+            {label: 'Prov_Sud_Ouest<br /><table><tr><td style="text-align: center;"><img src="legend/Prov_Sud_Ouest_2_BOUGOURIBA0.png" /></td><td>BOUGOURIBA</td></tr><tr><td style="text-align: center;"><img src="legend/Prov_Sud_Ouest_2_IOBA1.png" /></td><td>IOBA</td></tr><tr><td style="text-align: center;"><img src="legend/Prov_Sud_Ouest_2_NOUMBIEL2.png" /></td><td>NOUMBIEL</td></tr><tr><td style="text-align: center;"><img src="legend/Prov_Sud_Ouest_2_PONI3.png" /></td><td>PONI</td></tr></table>', layer: layer_Prov_Sud_Ouest_2},
+            {label: "Google Terrain", layer: layer_GoogleTerrain_1},
+            {label: "2gis Map", layer: layer_2gisMap_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
@@ -380,27 +394,27 @@
         });       
         setBounds();
         var i = 0;
-        layer_Prov_Sud_Ouest_1.eachLayer(function(layer) {
+        layer_Prov_Sud_Ouest_2.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Nom'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Nom']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Prov_Sud_Ouest_1'});
+            layer.bindTooltip((layer.feature.properties['Nom'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Nom']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Prov_Sud_Ouest_2'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        resetLabels([layer_Prov_Sud_Ouest_1]);
+        resetLabels([layer_Prov_Sud_Ouest_2]);
         map.on("zoomend", function(){
-            resetLabels([layer_Prov_Sud_Ouest_1]);
+            resetLabels([layer_Prov_Sud_Ouest_2]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_Prov_Sud_Ouest_1]);
+            resetLabels([layer_Prov_Sud_Ouest_2]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_Prov_Sud_Ouest_1]);
+            resetLabels([layer_Prov_Sud_Ouest_2]);
         });
         </script>
     </body>
